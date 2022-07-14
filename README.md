@@ -18,7 +18,8 @@
 
 ---
 
-1. devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/test.yml site.yml
+1. 
+```devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/test.yml site.yml
 
 PLAY [Print os facts] **********************************************************
 
@@ -39,16 +40,20 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 devops@devops-VirtualBox:~/ansible/playbook$
+```
 
-
-2. devops@devops-VirtualBox:~/ansible/playbook$ cat group_vars/all/examp.yml 
+2. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ cat group_vars/all/examp.yml 
 ---
   some_fact: 'all default fact'
+``` 
   
   
   
-  
-4. devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml 
+4. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml 
 
 PLAY [Print os facts] **************************************************************************************************************************
 
@@ -75,18 +80,25 @@ ok: [ubuntu] => {
 PLAY RECAP *************************************************************************************************************************************
 centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
 
 
-5. devops@devops-VirtualBox:~/ansible/playbook$ cat group_vars/deb/examp.yml ;echo ""
+
+5. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ cat group_vars/deb/examp.yml ;echo ""
 ---
   some_fact: "deb default fact"
 devops@devops-VirtualBox:~/ansible/playbook$ cat group_vars/el/examp.yml ;echo ""
 ---
   some_fact: "el default fact"
 devops@devops-VirtualBox:~/ansible/playbook$
+```
 
 
-6. devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml 
+6. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml 
 
 PLAY [Print os facts] **************************************************************************************************************************
 
@@ -113,10 +125,14 @@ ok: [ubuntu] => {
 PLAY RECAP *************************************************************************************************************************************
 centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
 
 
 
-7. devops@devops-VirtualBox:~/ansible/playbook$ ansible-vault encrypt group_vars/deb/examp.yml 
+
+7. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ ansible-vault encrypt group_vars/deb/examp.yml 
 New Vault password: 
 Confirm New Vault password: 
 Encryption successful
@@ -124,8 +140,14 @@ devops@devops-VirtualBox:~/ansible/playbook$ ansible-vault encrypt group_vars/el
 New Vault password: 
 Confirm New Vault password: 
 Encryption successful
+```
 
-8. devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+
+
+
+8. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
 Vault password: 
 
 PLAY [Print os facts] **************************************************************************************************************************
@@ -153,10 +175,18 @@ ok: [ubuntu] => {
 PLAY RECAP *************************************************************************************************************************************
 centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
+
+
 
 9. "local"
 
-10. devops@devops-VirtualBox:~/ansible/playbook$ cat inventory/prod.yml ; echo ""
+
+
+
+10. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ cat inventory/prod.yml ; echo ""
 ---
   el:
     hosts:
@@ -171,10 +201,13 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
       localhost:
         ansible_connection: local
         
+ ```
  
  
  
-11. devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+11. 
+```
+devops@devops-VirtualBox:~/ansible/playbook$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
 Vault password: 
 
 PLAY [Print os facts] **************************************************************************************************************************
@@ -210,3 +243,4 @@ PLAY RECAP *********************************************************************
 centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
